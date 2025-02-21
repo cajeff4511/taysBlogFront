@@ -168,14 +168,14 @@ function AddEditBlog({ token }) {
             <div className="mt-2">
               <p className="text-sm text-gray-500">Preview:</p>
               <img
-                src={`https://tays-blog-backend1-production.up.railway.app/${img}`}
+                src={`https://tayblogbackend-production.up.railway.app/${img}`}
                 alt="Preview"
                 className="max-w-xs max-h-40 object-cover border"
               />
             </div>
           )}
         </div>
-hello
+
         {/* Category */}
         <div className="mb-4">
           <label className="block text-gray-700">Category</label>
