@@ -9,7 +9,7 @@ function BlogsContainer({ token }) {
 
   const fetchBlogs = async () => {
     try {
-      const res = await axios.get('https://tayblogbackend-production.up.railway.app//blogs')
+      const res = await axios.get('https://tayblogbackend-production.up.railway.app/blogs')
       setBlogs(res.data)
       console.log(res.data)
     } catch (error) {
@@ -33,7 +33,7 @@ function BlogsContainer({ token }) {
         {blogs.map((item) => (
           <div key={item._id} className="w-[350px] h-[400px] flex flex-col justify-start items-center">
             <Link to={`/blog/${item._id}`}>
-              <img src={`https://tays-blog-backend1-production.up.railway.app/${item.img}`} alt="/" className="h-[300px] w-[300px] object-cover" />
+              <img src={`https://tayblogbackend-production.up.railway.app/${item.img}`} alt="/" className="h-[300px] w-[300px] object-cover" />
             </Link>
             <h3 className="text-[#032b22] text-xl">{item.category}</h3>
             <h1 className="text-[#032b22] text-2xl bold">{item.title}</h1>
