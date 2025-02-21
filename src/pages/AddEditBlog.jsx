@@ -12,7 +12,7 @@ function AddEditBlog({ token }) {
   const [title, setTitle] = useState('');
   const [blogContent, setBlogContent] = useState('');
   const [img, setImg] = useState(''); // store path of uploaded image
-  const [category, setCategory] = useState('faith cat');
+  const [category, setCategory] = useState('FAITH');
 
   // Redirect if not logged in
   useEffect(() => {
