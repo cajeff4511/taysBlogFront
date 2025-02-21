@@ -30,7 +30,7 @@ function App() {
     <div className="min-h-screen bg-[#8ea5b0] text-gray-800 w-full flex flex-col items-center">
       {/* Navigation Header only visible when logged in */}
       {token && (
-        <header className="flex items-center justify-between p-4 bg-blue-600 text-white">
+        <header className="flex items-center w-full justify-between p-4 bg-blue-600 text-white">
           <Link to="/" className="font-bold text-xl">
            Welcome Taylor!
           </Link>
