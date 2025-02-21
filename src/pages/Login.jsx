@@ -28,7 +28,7 @@ function Login({ setToken }) {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center py-10">
+    <div className="flex flex-col items-center justify-center py-10 w-full">
       <h1 className="text-2xl font-bold mb-4">Login</h1>
       <form onSubmit={handleLogin} className="w-full max-w-sm bg-white p-6 shadow rounded">
         {error && <div className="bg-red-100 text-red-700 p-2 mb-3">{error}</div>}
