@@ -16,7 +16,15 @@ function AddEditBlog({ token }) {
   const [img, setImg] = useState(''); // store path of uploaded image
   const [category, setCategory] = useState('faith cat');
 
-  // Initialize Quill with no "image" button
+  // 1) If there's no token, redirect user immediately (require login)
+  useEffect(() => {
+    if (!token) {
+      alert('You must be logged in to access this page.');
+      navigate('/login'); // or wherever your login page is
+    }
+  }, [token, navigate]);
+
+  // Initialize Quill
   const { quill, quillRef } = useQuill({
     theme: 'snow',
     modules: {
@@ -24,7 +32,7 @@ function AddEditBlog({ token }) {
         [{ header: [1, 2, 3, false] }],
         ['bold', 'italic', 'underline', 'strike'],
         [{ list: 'ordered' }, { list: 'bullet' }],
-        ['link'],    // removed 'image'
+        ['link'],
         ['clean']
       ],
     },
@@ -93,7 +101,6 @@ function AddEditBlog({ token }) {
       );
 
       if (res.data.filePath) {
-        // e.g. "uploads/1677123456789-cat.jpg"
         setImg(res.data.filePath);
       }
     } catch (error) {
@@ -118,7 +125,7 @@ function AddEditBlog({ token }) {
       const blogData = {
         title,
         blog: blogContent, // HTML from Quill
-        img,               // path from /upload
+        img,
         category,
       };
 
