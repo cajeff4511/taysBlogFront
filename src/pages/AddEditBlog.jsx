@@ -2,10 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
-// Quill
-import { useQuill } from 'react-quilljs';
-import 'quill/dist/quill.snow.css';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 function AddEditBlog({ token }) {
   const { id } = useParams(); // If editing, this is the blog ID
@@ -16,29 +14,15 @@ function AddEditBlog({ token }) {
   const [img, setImg] = useState(''); // store path of uploaded image
   const [category, setCategory] = useState('faith cat');
 
-  // 1) If there's no token, redirect user immediately (require login)
+  // Redirect if not logged in
   useEffect(() => {
     if (!token) {
       alert('You must be logged in to access this page.');
-      navigate('/login'); // or wherever your login page is
+      navigate('/login');
     }
   }, [token, navigate]);
 
-  // Initialize Quill
-  const { quill, quillRef } = useQuill({
-    theme: 'snow',
-    modules: {
-      toolbar: [
-        [{ header: [1, 2, 3, false] }],
-        ['bold', 'italic', 'underline', 'strike'],
-        [{ list: 'ordered' }, { list: 'bullet' }],
-        ['link'],
-        ['clean']
-      ],
-    },
-  });
-
-  // If we have an id, fetch the blog details
+  // If editing, fetch blog details
   useEffect(() => {
     if (id) {
       axios
@@ -51,33 +35,18 @@ function AddEditBlog({ token }) {
             if (found.category) {
               setCategory(found.category);
             }
-            // Wait until quill is ready, then set the content
-            if (quill) {
-              quill.clipboard.dangerouslyPasteHTML(found.blog || '');
-              setBlogContent(found.blog || '');
-            }
+            setBlogContent(found.blog || '');
           }
         })
         .catch((err) => console.error(err));
     }
-  }, [id, quill]);
-
-  // Keep track of quill changes in local state
-  useEffect(() => {
-    if (quill) {
-      quill.on('text-change', () => {
-        const html = quill.root.innerHTML;
-        setBlogContent(html);
-      });
-    }
-  }, [quill]);
+  }, [id]);
 
   // ---- File Upload Handler ----
   const handleFileChange = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
-    // Check if user is logged in
     if (!token) {
       alert('You must be logged in to upload images.');
       return;
@@ -91,7 +60,7 @@ function AddEditBlog({ token }) {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
-        }
+        },
       };
 
       const res = await axios.post(
@@ -109,7 +78,7 @@ function AddEditBlog({ token }) {
     }
   };
 
-  // ---- Submit to /blogs or /blogs/:id ----
+  // ---- Submit Handler ----
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!token) {
@@ -119,25 +88,25 @@ function AddEditBlog({ token }) {
 
     try {
       const config = {
-        headers: { Authorization: `Bearer ${token}` }
+        headers: { Authorization: `Bearer ${token}` },
       };
 
       const blogData = {
         title,
-        blog: blogContent, // HTML from Quill
+        blog: blogContent, // HTML from ReactQuill
         img,
         category,
       };
 
       if (id) {
-        // Edit
+        // Edit existing blog
         await axios.put(
           `https://tays-blog-backend1-production.up.railway.app/blogs/${id}`,
           blogData,
           config
         );
       } else {
-        // Create new
+        // Create new blog
         await axios.post(
           'https://tays-blog-backend1-production.up.railway.app/blogs',
           blogData,
@@ -167,12 +136,22 @@ function AddEditBlog({ token }) {
           />
         </div>
 
-        {/* Blog Content (react-quilljs) */}
+        {/* Blog Content (ReactQuill) */}
         <div className="mb-4">
           <label className="block text-gray-700">Blog Content</label>
-          <div
-            ref={quillRef}
-            style={{ height: '300px', marginBottom: '2rem' }}
+          <ReactQuill
+            theme="snow"
+            value={blogContent}
+            onChange={setBlogContent}
+            modules={{
+              toolbar: [
+                [{ header: [1, 2, 3, false] }],
+                ['bold', 'italic', 'underline', 'strike'],
+                [{ list: 'ordered' }, { list: 'bullet' }],
+                ['link'],
+                ['clean']
+              ],
+            }}
           />
         </div>
 
