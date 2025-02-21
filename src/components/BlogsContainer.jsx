@@ -9,7 +9,7 @@ function BlogsContainer({ token }) {
 
   const fetchBlogs = async () => {
     try {
-      const res = await axios.get('https://tays-blog-backend1-production.up.railway.app/blogs')
+      const res = await axios.get('https://tayblogbackend-production.up.railway.app//blogs')
       setBlogs(res.data)
       console.log(res.data)
     } catch (error) {

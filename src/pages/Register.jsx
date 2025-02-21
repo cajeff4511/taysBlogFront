@@ -13,7 +13,7 @@ function Register() {
   const handleRegister = async (e) => {
     e.preventDefault()
     try {
-      const res = await axios.post('https://tays-blog-backend1-production.up.railway.app/register', {
+      const res = await axios.post('https://tayblogbackend-production.up.railway.app/register', {
         username,
         password
       })

@@ -12,7 +12,7 @@ function Login({ setToken }) {
   const handleLogin = async (e) => {
     e.preventDefault()
     try {
-      const res = await axios.post('https://tays-blog-backend1-production.up.railway.app/login', {
+      const res = await axios.post('https://tayblogbackend-production.up.railway.app/login', {
         username,
         password
       })

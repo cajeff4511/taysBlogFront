@@ -11,7 +11,7 @@ function BlogDetails({ token }) {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const res = await axios.get('https://tays-blog-backend1-production.up.railway.app/blogs');
+        const res = await axios.get('https://tayblogbackend-production.up.railway.app/blogs');
         const found = res.data.find((b) => b._id === id);
         setBlog(found || null);
       } catch (error) {
@@ -33,7 +33,7 @@ function BlogDetails({ token }) {
     if (!window.confirm('Are you sure you want to delete this blog?')) return;
     try {
       await axios.delete(
-        `https://tays-blog-backend1-production.up.railway.app/blogs/${blog._id}`,
+        `https://tayblogbackend-production.up.railway.app/blogs/${blog._id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       alert('Blog deleted successfully.');

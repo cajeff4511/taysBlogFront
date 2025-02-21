@@ -26,7 +26,7 @@ function AddEditBlog({ token }) {
   useEffect(() => {
     if (id) {
       axios
-        .get('https://tays-blog-backend1-production.up.railway.app/blogs')
+        .get('https://tayblogbackend-production.up.railway.app/blogs')
         .then((res) => {
           const found = res.data.find((b) => b._id === id);
           if (found) {
@@ -64,7 +64,7 @@ function AddEditBlog({ token }) {
       };
 
       const res = await axios.post(
-        'https://tays-blog-backend1-production.up.railway.app/upload',
+        'https://tayblogbackend-production.up.railway.app/upload',
         formData,
         config
       );
@@ -101,14 +101,14 @@ function AddEditBlog({ token }) {
       if (id) {
         // Edit existing blog
         await axios.put(
-          `https://tays-blog-backend1-production.up.railway.app/blogs/${id}`,
+          `https://tayblogbackend-production.up.railway.app/blogs/${id}`,
           blogData,
           config
         );
       } else {
         // Create new blog
         await axios.post(
-          'https://tays-blog-backend1-production.up.railway.app/blogs',
+          'https://tayblogbackend-production.up.railway.app/blogs',
           blogData,
           config
         );
