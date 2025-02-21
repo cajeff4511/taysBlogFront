@@ -185,9 +185,9 @@ function AddEditBlog({ token }) {
             className="border w-full p-2"
             required
           >
-            <option value="faith cat">Faith Cat</option>
-            <option value="fitness cat">Fitness Cat</option>
-            <option value="flights cat">Flights Cat</option>
+            <option value="FAITH">FAITH</option>
+            <option value="FITNESS/WELLNESS">FITNESS/WELLNESS</option>
+            <option value="FLIGHTS">FLIGHTS</option>
           </select>
         </div>
 
