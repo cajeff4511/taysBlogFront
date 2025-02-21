@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import BlogDetails from './pages/BlogDetails';
 import AddEditBlog from './pages/AddEditBlog';
+import Footer from './components/Footer';
 
 function App() {
   const [token, setToken] = useState(null);
@@ -26,7 +27,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#8ea5b0] text-gray-800">
+    <div className="min-h-screen bg-[#8ea5b0] text-gray-800 w-full flex flex-col items-center">
       {/* Navigation Header only visible when logged in */}
       {token && (
         <header className="flex items-center justify-between p-4 bg-blue-600 text-white">
@@ -56,6 +57,7 @@ function App() {
         <Route path="/add" element={<AddEditBlog token={token} />} />
         <Route path="/edit/:id" element={<AddEditBlog token={token} />} />
       </Routes>
+      <Footer/>
     </div>
   );
 }

@@ -6,7 +6,7 @@ import About from '../components/About'
 
 function Home({ token }) {
   return (
-    <div className="">
+    <div className="w-full">
       <Hero />
       <About />
       <BlogsContainer token={token} />
