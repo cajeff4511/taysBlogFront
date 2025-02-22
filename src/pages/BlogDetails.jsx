@@ -59,13 +59,13 @@ function BlogDetails({ token }) {
           <div className="flex flex-col sm:flex-row gap-4">
             <button
               onClick={handleEdit}
-              className="bg-blue-500 text-white px-4 py-2 rounded"
+              className="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer"
             >
               Edit
             </button>
             <button
               onClick={handleDelete}
-              className="bg-red-500 text-white px-4 py-2 rounded"
+              className="bg-red-500 text-white px-4 py-2 rounded cursor-pointer"
             >
               Delete
             </button>
