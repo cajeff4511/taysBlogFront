@@ -48,12 +48,22 @@ function BlogDetails({ token }) {
       <div className="w-full sm:w-[70%]">
         <h3 className="text-lg sm:text-xl">{blog.category}</h3>
         <h1 className="text-3xl sm:text-5xl font-bold mb-2">{blog.title}</h1>
-        <p className='italic mb-3 text-sm sm:text-base'>{new Date(blog.createdAt).toISOString().split('T')[0]}/Taylor Stewart</p>
+        <p className='italic mb-3 text-sm sm:text-base'>
+          {new Date(blog.createdAt).toISOString().split('T')[0]}/Taylor Stewart
+        </p>
 
         <div
           className="prose prose-invert mb-4"
           dangerouslySetInnerHTML={{ __html: blog.blog }}
         />
+
+        {/* Back to Home Button */}
+        <button
+          onClick={() => navigate('/')}
+          className="bg-gray-500 text-white px-4 py-2 rounded cursor-pointer mb-4"
+        >
+          Back to Home
+        </button>
 
         {token && (
           <div className="flex flex-col sm:flex-row gap-4">

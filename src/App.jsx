@@ -48,7 +48,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home token={token} />} />
         <Route path="/login" element={<Login setToken={setToken} />} />
-        <Route path="/register" element={<Register />} />
+        <Route /* path="/register" element={<Register />} */ />
         <Route path="/blog/:id" element={<BlogDetails token={token} />} />
         <Route path="/add" element={<AddEditBlog token={token} />} />
         <Route path="/edit/:id" element={<AddEditBlog token={token} />} />
