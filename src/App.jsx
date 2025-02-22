@@ -1,4 +1,3 @@
-// src/App.jsx
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import Home from './pages/Home';
@@ -13,7 +12,6 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // On load, check if we have a token in localStorage
     const storedToken = localStorage.getItem('token');
     if (storedToken) {
       setToken(storedToken);
@@ -28,14 +26,13 @@ function App() {
 
   return (
     <div className="min-h-screen bg-[#8ea5b0] text-gray-800 w-full flex flex-col items-center">
-      {/* Navigation Header only visible when logged in */}
       {token && (
-        <header className="flex items-center w-full justify-between p-4 bg-blue-600 text-white">
-          <Link to="/" className="font-bold text-xl">
-           Welcome Taylor!
+        <header className="flex flex-col sm:flex-row items-center w-full justify-between p-4 bg-blue-600 text-white">
+          <Link to="/" className="font-bold text-xl mb-2 sm:mb-0">
+            Welcome Taylor!
           </Link>
-          <nav>
-            <Link to="/add" className="mr-4">
+          <nav className="flex flex-col sm:flex-row items-center">
+            <Link to="/add" className="mr-0 sm:mr-4 mb-2 sm:mb-0">
               Add Blog
             </Link>
             <button
@@ -48,7 +45,6 @@ function App() {
         </header>
       )}
 
-      {/* Routes */}
       <Routes>
         <Route path="/" element={<Home token={token} />} />
         <Route path="/login" element={<Login setToken={setToken} />} />
@@ -57,7 +53,7 @@ function App() {
         <Route path="/add" element={<AddEditBlog token={token} />} />
         <Route path="/edit/:id" element={<AddEditBlog token={token} />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

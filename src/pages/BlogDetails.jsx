@@ -1,4 +1,3 @@
-// src/pages/BlogDetails.jsx
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -45,21 +44,19 @@ function BlogDetails({ token }) {
   };
 
   return (
-    <div className="flex flex-col items-center text-white bg-[#8ea5b0] h-full w-full">
-      <div className="w-[70%]">
-        <h3>{blog.category}</h3>
-        <h1 className="text-5xl/[40px] font-bold mb-2 ">{blog.title}</h1>
-        <p className='italic mb-3'>{new Date(blog.createdAt).toISOString().split('T')[0]}/Taylor Stewart</p>
+    <div className="flex flex-col items-center text-white bg-[#8ea5b0] min-h-[70vh] w-full p-4">
+      <div className="w-full sm:w-[70%]">
+        <h3 className="text-lg sm:text-xl">{blog.category}</h3>
+        <h1 className="text-3xl sm:text-5xl font-bold mb-2">{blog.title}</h1>
+        <p className='italic mb-3 text-sm sm:text-base'>{new Date(blog.createdAt).toISOString().split('T')[0]}/Taylor Stewart</p>
 
-        {/* Render Quill HTML here */}
         <div
-         className="prose prose-invert mb-4"
+          className="prose prose-invert mb-4"
           dangerouslySetInnerHTML={{ __html: blog.blog }}
         />
 
-        {/* Edit and Delete buttons appear only if logged in */}
         {token && (
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-4">
             <button
               onClick={handleEdit}
               className="bg-blue-500 text-white px-4 py-2 rounded"

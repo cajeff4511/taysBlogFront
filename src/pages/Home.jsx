@@ -1,8 +1,7 @@
-// src/pages/Home.jsx
-import React from 'react'
-import BlogsContainer from '../components/BlogsContainer'
-import Hero from '../components/Hero'
-import About from '../components/About'
+import React from 'react';
+import BlogsContainer from '../components/BlogsContainer';
+import Hero from '../components/Hero';
+import About from '../components/About';
 
 function Home({ token }) {
   return (
@@ -11,7 +10,7 @@ function Home({ token }) {
       <About />
       <BlogsContainer token={token} />
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;

@@ -17,14 +17,14 @@ const Hero = () => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.5, duration: 1 }}
-        className="p-10 rounded-lg mb-[15%]"
+        className="p-6 sm:p-10 rounded-lg mb-10 sm:mb-[15%] text-center"
       >
         <motion.h1 
           initial={{ scale: 0.8 }}
           whileInView={{ scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.7, duration: 1 }}
-          className="text-[150px] text-center mb-5 text-white italic"
+          className="text-4xl sm:text-7xl md:text-[150px] mb-5 text-white italic"
         >
           Living Well
         </motion.h1>
@@ -33,7 +33,7 @@ const Hero = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.9, duration: 1 }}
-          className="text-center text-white text-[20px] tracking-widest"
+          className="text-sm sm:text-base md:text-[20px] text-white tracking-widest"
         >
           FAITH. FITNESS. FINDS. FLIGHTS.
         </motion.p>
@@ -42,7 +42,7 @@ const Hero = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 1.1, duration: 1 }}
-          className="text-center text-white text-[20px] tracking-widest"
+          className="text-sm sm:text-base md:text-[20px] text-white tracking-widest"
         >
           BY TAYLOR STEWART
         </motion.p>
