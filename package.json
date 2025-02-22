@@ -12,8 +12,10 @@
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^34.2.0",
     "@ckeditor/ckeditor5-react": "^9.5.0",
+    "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.0.7",
     "axios": "^1.7.9",
+    "framer-motion": "^12.4.7",
     "quill": "^2.0.3",
     "quill-image-drop-module": "^1.0.3",
     "quill-image-resize-module": "^3.0.0",

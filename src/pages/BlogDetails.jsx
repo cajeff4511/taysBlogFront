@@ -53,7 +53,7 @@ function BlogDetails({ token }) {
 
         {/* Render Quill HTML here */}
         <div
-          className="text-white mb-4"
+         className="prose prose-invert mb-4"
           dangerouslySetInnerHTML={{ __html: blog.blog }}
         />
 
