@@ -45,37 +45,38 @@ function BlogsContainer({ token }) {
       </motion.h1>
     
       <motion.div 
-        className="w-full sm:w-[80%] flex flex-wrap gap-4 justify-center"
+        className="w-full sm:w-[100%] flex flex-wrap gap-4 justify-center"
         variants={containerVariants}
       >
-        {blogs.map((item) => (
-          <motion.div 
-            key={item._id} 
-            className="w-full sm:w-[350px] h-auto sm:h-[400px] flex flex-col justify-start items-center  p-4 rounded"
-            variants={itemVariants}
-            whileInView="visible"
-            initial="hidden"
-            viewport={{ once: true }}
-          >
-            <Link to={`/blog/${item._id}`}>
-              <motion.img
-                src={item.img}
-                alt={item.title}
-                className="w-full h-auto sm:h-[300px] object-cover rounded-sm"
-                whileHover={{ scale: 1.05 }}
-              />
-            </Link>
-            <motion.h3 className="text-white text-lg mt-2" variants={itemVariants}>
-              {item.category}
-            </motion.h3>
-            <motion.h1 className="text-white text-2xl font-bold text-center" variants={itemVariants}>
-              {item.title}
-            </motion.h1>
-            <motion.p className="text-white text-sm italic" variants={itemVariants}>
-              {new Date(item.createdAt).toISOString().split('T')[0]}
-            </motion.p>
-          </motion.div>
-        ))}
+        {blogs.slice(0, 9).map((item) => (
+  <motion.div 
+    key={item._id} 
+    className="w-full sm:w-[350px] h-auto sm:h-[400px] flex flex-col justify-start items-center p-4 rounded"
+    variants={itemVariants}
+    whileInView="visible"
+    initial="hidden"
+    viewport={{ once: true }}
+  >
+    <Link to={`/blog/${item._id}`}>
+      <motion.img
+        src={item.img}
+        alt={item.title}
+        className="w-full h-auto sm:h-[300px] object-cover rounded-sm"
+        whileHover={{ scale: 1.05 }}
+      />
+    </Link>
+    <motion.h3 className="text-white text-lg mt-2" variants={itemVariants}>
+      {item.category}
+    </motion.h3>
+    <motion.h1 className="text-white text-2xl font-bold text-center" variants={itemVariants}>
+      {item.title}
+    </motion.h1>
+    <motion.p className="text-white text-sm italic" variants={itemVariants}>
+      {new Date(item.createdAt).toISOString().split('T')[0]}
+    </motion.p>
+  </motion.div>
+))}
+
       </motion.div>
     </motion.div>
   );
