@@ -46,7 +46,7 @@ function BlogDetails({ token }) {
 
   return (
     <div className="flex flex-col items-center text-white bg-[#8ea5b0] h-full w-full">
-      <div className="w-[80%]">
+      <div className="w-[70%]">
         <h3>{blog.category}</h3>
         <h1 className="text-5xl/[40px] font-bold mb-2 ">{blog.title}</h1>
         <p className='italic mb-3'>{new Date(blog.createdAt).toISOString().split('T')[0]}/Taylor Stewart</p>

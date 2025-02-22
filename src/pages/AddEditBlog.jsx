@@ -11,7 +11,7 @@ function AddEditBlog({ token }) {
 
   const [title, setTitle] = useState('');
   const [blogContent, setBlogContent] = useState('');
-  const [img, setImg] = useState(''); // store path of uploaded image
+  const [img, setImg] = useState(''); // store the S3 URL of the uploaded image
   const [category, setCategory] = useState('FAITH');
 
   // Redirect if not logged in
@@ -70,7 +70,7 @@ function AddEditBlog({ token }) {
       );
 
       if (res.data.filePath) {
-        setImg(res.data.filePath);
+        setImg(res.data.filePath); // This should be the full S3 URL
       }
     } catch (error) {
       console.error(error);
@@ -167,8 +167,9 @@ function AddEditBlog({ token }) {
           {img && (
             <div className="mt-2">
               <p className="text-sm text-gray-500">Preview:</p>
+              {/* Directly use the S3 URL */}
               <img
-                src={`https://tayblogbackend-production.up.railway.app/${img}`}
+                src={img}
                 alt="Preview"
                 className="max-w-xs max-h-40 object-cover border"
               />
