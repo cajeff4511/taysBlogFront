@@ -34,7 +34,7 @@ function BlogsContainer({ token }) {
 
   return (
     <motion.div 
-      className="flex flex-col items-center justify-start min-h-screen bg-[#8ea5b0] text-white p-4"
+      className="flex flex-col items-center justify-start min-h-[50vh] bg-[#8ea5b0] text-white p-4"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
